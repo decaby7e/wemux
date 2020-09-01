@@ -19,31 +19,6 @@ and notifications when users attach/detach.
 
 ## How To Install
   **IMPORTANT**: Wemux requires tmux version >= 1.6
-  
-### MacPorts (on OS X)
-  If you have [MacPorts](https://www.macports.org/) installed you can
-  install wemux with a very simple:
-
-    sudo port install wemux
-
-### Homebrew (on OS X)
-  If you have [Homebrew](http://mxcl.github.com/homebrew/) installed you can
-  install wemux with a fairly simple:
-
-    brew install wemux
-
-  The user that installed wemux will automatically be added to the wemux host list.
-  To change the host or add more hosts, edit `/usr/local/etc/wemux.conf` and add the
-  username to the host_list array.
-
-  Users in the host_list will be able to start new wemux servers, all other
-  users will be wemux clients and join these servers.
-
-    $ vim /usr/local/etc/wemux.conf
-         OR
-    $ wemux conf
-
-    host_list=(zolrath brocksamson)
 
 ### Manual Installation
   The rest of this readme will operate under the assumption you'll place wemux
@@ -74,37 +49,48 @@ and notifications when users attach/detach.
   directory and perform a `git pull`
 
 ## Host Commands
+
 #### wemux start
   Use `wemux start` to start a wemux server, chmod /tmp/wemux-wemux to 1777 so
   that other users may connect to it, and attach to it.  If a wemux server
   already exists, it will attach to it instead.
+
 #### wemux attach
   Use `wemux attach` to attach to an existing wemux server.
+
 #### wemux stop
   Use `wemux stop` to kill the wemux server and remove the /tmp/wemux-wemux
   socket.
+
 #### wemux kick *username*
   Use `wemux kick <username>` to kick an SSH user from the server and remove
   their wemux rogue sessions.
+  
 #### wemux config
   Use `wemux config` to open `/usr/local/etc/wemux.conf` in your $EDITOR.
   Note this only works if you have the environment variable EDITOR configured.
+  
 #### wemux
   When `wemux` is run without any arguments in host mode, it is just like
   running wemux start.  It will reattach to an existing wemux server if it
   exists, otherwise it will start a new server.
 
 ## Client Commands
+
 #### wemux mirror
   Use `wemux mirror` to attach to server in read-only mode.
+  
 #### wemux pair
   Use `wemux pair` to attach to server in pair mode, allowing the client to 
   control the terminal as well.
+  
 #### wemux rogue
   Use `wemux rogue` to attach to server in rogue mode, which allows both editing
   with the host and switching to windows independently from the host.
+  
 #### wemux logout
   Use `wemux logout` to remove your rogue mode session.
+  
 #### wemux
   When `wemux` is run without any arguments in client mode, its behavior
   attempts to intelligently select mirror, pair, or rogue:
